@@ -110,34 +110,34 @@ button:hover{
 
 <header>மாணவர் சேர்க்கை படிவம்</header>
 
-<form class="form-container">
+<form class="form-container" id="admissionForm">
 
 <!-- 1. மாணவர் தகவல் -->
 <div class="section">
 <h2>1. மாணவர் தகவல்</h2>
 
 <div class="grid">
-<input type="text" placeholder="முழு பெயர்" required>
-<input type="date" placeholder="பிறந்த தேதி" required>
-<input type="number" placeholder="வயது" required>
+<input name="name" type="text" placeholder="முழு பெயர்" required>
+<input name="dob" type="date" required>
+<input name="age" type="number" placeholder="வயது" required>
 
-<select required>
+<select name="gender" required>
 <option value="">பாலினம்</option>
 <option>ஆண்</option>
 <option>பெண்</option>
 <option>மற்றவை</option>
 </select>
 
-<input type="text" placeholder="பள்ளியின் பெயர் மற்றும் வகுப்பு" required>
+<input name="school" type="text" placeholder="பள்ளியின் பெயர் மற்றும் வகுப்பு" required>
 
-<select required>
+<select name="medium" required>
 <option value="">மொழி</option>
 <option>ஆங்கிலம்</option>
 <option>தமிழ்</option>
 <option>மற்றவை</option>
 </select>
 
-<select required>
+<select name="standard" required>
 <option value="">சேர்க்கை செய்ய விரும்பும் வகுப்பு</option>
 <option>1ஆம் வகுப்பு</option>
 <option>2ஆம் வகுப்பு</option>
@@ -153,43 +153,43 @@ button:hover{
 <option>12ஆம் வகுப்பு</option>
 </select>
 
-<textarea placeholder="முகவரி" required></textarea>
+<textarea name="address" placeholder="முகவரி" required></textarea>
 </div>
 
 <br>
 
 <div class="photo-box">
-<label><strong>மாணவர் புகைப்படம் (கட்டாயம்)</strong></label><br><br>
-<input type="file" accept="image/*" required>
+<label><strong>மாணவர் புகைப்படம்</strong></label><br><br>
+<input type="file" id="photo">
 </div>
 </div>
 
-<!-- 2. பெற்றோர் / பாதுகாவலர் தகவல் -->
+<!-- 2. பெற்றோர் தகவல் -->
 <div class="section">
 <h2>2. பெற்றோர் / பாதுகாவலர் தகவல்</h2>
 
 <div class="grid">
-<select required>
+<select name="parentType" required>
 <option value="">தந்தை / தாய் / பாதுகாவலர்</option>
 <option>தந்தை</option>
 <option>தாய்</option>
 <option>பாதுகாவலர்</option>
 </select>
 
-<input type="text" placeholder="பெயர்" required>
-<input type="tel" placeholder="மொபைல் எண்" required>
-<input type="tel" placeholder="மாற்று எண்">
-<input type="text" placeholder="வேலை/தொழில்" required>
+<input name="parent" type="text" placeholder="பெயர்" required>
+<input name="mobile" type="tel" placeholder="மொபைல் எண்" required>
+<input name="alt" type="tel" placeholder="மாற்று எண்">
+<input name="occupation" type="text" placeholder="வேலை/தொழில்" required>
 </div>
 </div>
 
-<!-- 3. வகுப்பு / பாடப்பிரிவு -->
+<!-- 3. வகுப்பு -->
 <div class="section">
 <h2>3. வகுப்பு / பாடப்பிரிவு</h2>
 
 <div class="grid">
-<select required>
-<option value="">வகுப்பு / கிரேடு</option>
+<select name="grade" required>
+<option value="">வகுப்பு</option>
 <option>1ஆம் வகுப்பு</option>
 <option>2ஆம் வகுப்பு</option>
 <option>3ஆம் வகுப்பு</option>
@@ -204,9 +204,9 @@ button:hover{
 <option>12ஆம் வகுப்பு</option>
 </select>
 
-<input type="text" placeholder="தேவைப்படும் பாடங்கள் (கணிதம், அறிவியல், ஆங்கிலம் போன்றவை)" required>
+<input name="subjects" type="text" placeholder="தேவைப்படும் பாடங்கள்" required>
 
-<select required>
+<select name="batch" required>
 <option value="">Batch</option>
 <option>REGULAR</option>
 <option>SAT & SUNDAY</option>
@@ -215,10 +215,39 @@ button:hover{
 </div>
 
 <button type="submit">சமர்ப்பிக்கவும்</button>
-
 </form>
 
+
 </div>
+    <script>
+const form = document.getElementById("admissionForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  // photo handling (Vercel safe)
+  const photoInput = document.getElementById("photo");
+  data.photo = photoInput.files.length > 0 ? photoInput.files[0].name : "vivek.png";
+
+  const res = await fetch("/api/admission", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  if (res.ok) {
+    alert("மாணவர் சேர்க்கை வெற்றிகரமாக முடிந்தது");
+    form.reset();
+  } else {
+    alert("பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்");
+  }
+});
+</script>
+
 
 </body>
 </html>
+
