@@ -110,16 +110,18 @@ button:hover{
 
 <header>மாணவர் சேர்க்கை படிவம்</header>
 
-<form class="form-container" id="admissionForm">
+<form class="form-container">
 
 <!-- 1. மாணவர் தகவல் -->
 <div class="section">
 <h2>1. மாணவர் தகவல்</h2>
 
 <div class="grid">
-<input name="name" type="text" placeholder="முழு பெயர்" required>
-<input name="dob" type="date" required>
-<input name="age" type="number" placeholder="வயது" required>
+<input type="text" name="studentName" placeholder="முழு பெயர்" required>
+
+<input type="date" name="dob" required>
+
+<input type="number" name="age" placeholder="வயது" required>
 
 <select name="gender" required>
 <option value="">பாலினம்</option>
@@ -128,7 +130,7 @@ button:hover{
 <option>மற்றவை</option>
 </select>
 
-<input name="school" type="text" placeholder="பள்ளியின் பெயர் மற்றும் வகுப்பு" required>
+<input type="text" name="school" placeholder="பள்ளியின் பெயர் மற்றும் தற்போதைய வகுப்பு" required>
 
 <select name="medium" required>
 <option value="">மொழி</option>
@@ -137,7 +139,7 @@ button:hover{
 <option>மற்றவை</option>
 </select>
 
-<select name="standard" required>
+<select name="admissionClass" required>
 <option value="">சேர்க்கை செய்ய விரும்பும் வகுப்பு</option>
 <option>1ஆம் வகுப்பு</option>
 <option>2ஆம் வகுப்பு</option>
@@ -159,37 +161,40 @@ button:hover{
 <br>
 
 <div class="photo-box">
-<label><strong>மாணவர் புகைப்படம்</strong></label><br><br>
-<input type="file" id="photo">
+<label><strong>மாணவர் புகைப்படம் (கட்டாயம்)</strong></label><br><br>
+<input type="file" name="photo" accept="image/*" required>
 </div>
 </div>
 
-<!-- 2. பெற்றோர் தகவல் -->
+<!-- 2. பெற்றோர் / பாதுகாவலர் தகவல் -->
 <div class="section">
 <h2>2. பெற்றோர் / பாதுகாவலர் தகவல்</h2>
 
 <div class="grid">
-<select name="parentType" required>
+<select name="guardianType" required>
 <option value="">தந்தை / தாய் / பாதுகாவலர்</option>
 <option>தந்தை</option>
 <option>தாய்</option>
 <option>பாதுகாவலர்</option>
 </select>
 
-<input name="parent" type="text" placeholder="பெயர்" required>
-<input name="mobile" type="tel" placeholder="மொபைல் எண்" required>
-<input name="alt" type="tel" placeholder="மாற்று எண்">
-<input name="occupation" type="text" placeholder="வேலை/தொழில்" required>
+<input type="text" name="parentName" placeholder="பெயர்" required>
+
+<input type="tel" name="mobile" placeholder="மொபைல் எண்" required>
+
+<input type="tel" name="altMobile" placeholder="மாற்று எண்">
+
+<input type="text" name="occupation" placeholder="வேலை / தொழில்" required>
 </div>
 </div>
 
-<!-- 3. வகுப்பு -->
+<!-- 3. வகுப்பு / பாடப்பிரிவு -->
 <div class="section">
 <h2>3. வகுப்பு / பாடப்பிரிவு</h2>
 
 <div class="grid">
 <select name="grade" required>
-<option value="">வகுப்பு</option>
+<option value="">வகுப்பு / கிரேடு</option>
 <option>1ஆம் வகுப்பு</option>
 <option>2ஆம் வகுப்பு</option>
 <option>3ஆம் வகுப்பு</option>
@@ -204,7 +209,7 @@ button:hover{
 <option>12ஆம் வகுப்பு</option>
 </select>
 
-<input name="subjects" type="text" placeholder="தேவைப்படும் பாடங்கள்" required>
+<input type="text" name="subjects" placeholder="தேவைப்படும் பாடங்கள் (கணிதம், அறிவியல், ஆங்கிலம்)" required>
 
 <select name="batch" required>
 <option value="">Batch</option>
@@ -215,6 +220,7 @@ button:hover{
 </div>
 
 <button type="submit">சமர்ப்பிக்கவும்</button>
+
 </form>
 
 
@@ -252,5 +258,6 @@ form.addEventListener("submit", async (e) => {
 
 </body>
 </html>
+
 
 
