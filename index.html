@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIVEKANANDA ACADEMY</title>
+    <link rel="icon" href="vivek.png">
+
+    <style>
+/* ---------------- GLOBAL ---------------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('NEW VI2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* ---------------- POPUP ---------------- */
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* controlled by sessionStorage */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    position: relative;
+}
+
+.popup-img {
+    width: 90%;
+    max-width: 450px;
+    border-radius: 10px;
+}
+
+.popup-quote {
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px black;
+}
+
+/* Popup animation */
+@keyframes popupFade {
+    0% { opacity: 0; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+#popup.show {
+    display: flex;
+    animation: popupFade 0.6s ease-out;
+}
+
+/* ---------------- HEADER ---------------- */
+header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 32px;
+    text-align: center;
+}
+
+header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* ---------------- NAVIGATION ---------------- */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 20px;
+    justify-content: center;
+    gap: 12px;
+}
+
+nav button, .drop-btn {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* ---------------- DROPDOWN ---------------- */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(0,0,0,0.7);
+    min-width: 150px;
+    border-radius: 8px;
+    z-index: 10;
+    margin-top: 5px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ---------------- INFO SECTION ---------------- */
+.info-section {
+    padding: 25px;
+    background: rgba(0,0,0,0.45);
+    margin: 20px;
+    border-radius: 12px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.info-section img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+}
+
+.info-text {
+    flex: 1;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 600px) {
+    header {
+        font-size: 22px;
+        flex-direction: column;
+    }
+
+    nav button, .drop-btn {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+
+    .info-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .popup-quote {
+        font-size: 18px;
+        top: 20%;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- POPUP -->
+<div id="popup">
+    <div class="popup-content">
+        <img src="NEW VI.jpg" alt="Popup Image" class="popup-img">
+        <p class="popup-quote">"Create Successful Ideal"</p>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <img src="vivek.png" alt="Logo">
+    VIVEKANANDA ACADEMY
+</header>
+
+<!-- NAVIGATION -->
+<nav>
+    <button onclick="goto('register.html')">Register</button>
+    <button onclick="goto('student-login.html')">Student</button>
+    <button onclick="goto('parent-login.html')">Parent</button>
+    <button onclick="goto('teacher-login.html')">Teacher</button>
+    <button onclick="goto('admin-login.html')">Admin</button>
+
+    <div class="dropdown">
+        <button class="drop-btn">Course Details ▼</button>
+        <div class="dropdown-content">
+            <a href="errorpage.html">NEET</a>
+            <a href="errorpage.html">JEE</a>
+        </div>
+    </div>
+
+    <button onclick="goto('gallery.html')">Gallery</button>
+    <button onclick="goto('contact.html')">Contact Us</button>
+</nav>
+
+<!-- INFO SECTION -->
+<div class="info-section">
+    <img src="vivek.png" alt="Academy Logo">
+    <div class="info-text">
+        <h2>VIVEKANANDA ACADEMY</h2>
+        <h3>PODATUR PET</h3>
+        <p>We provide quality coaching for students from Class 1 to 12.</p>
+        <p>Track student progress, tests, ranks and full analysis.</p>
+    </div>
+</div>
+
+<script>
+function goto(page) {
+    if (page) window.location.href = page;
+}
+
+/* ===== POPUP: SHOW ONCE PER SESSION ===== */
+const popup = document.getElementById("popup");
+
+if (!sessionStorage.getItem("vivekPopupShown")) {
+    popup.classList.add("show");
+    sessionStorage.setItem("vivekPopupShown", "true");
+}
+
+// Close popup on click
+popup.addEventListener("click", function () {
+    popup.classList.remove("show");
+});
+</script>
+
+</body>
+</html>

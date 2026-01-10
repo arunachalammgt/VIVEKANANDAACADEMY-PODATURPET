@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery</title>
+<link rel="icon" href="vivek.png">
+
+<style>
+/* ================= BASE ================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background:url("NEW VI2.jpg");
+    overflow-x: hidden;
+
+}
+
+/* ===== AMBIENT NANO BACKGROUND ===== */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: -1;
+    background: radial-gradient(
+        circle,
+        rgba(0,240,255,0.08),
+        transparent 60%
+    );
+    animation: bgMove 25s linear infinite;
+}
+
+body::after {
+    background: radial-gradient(
+        circle,
+        rgba(255,0,247,0.06),
+        transparent 60%
+    );
+    animation-duration: 35s;
+}
+
+@keyframes bgMove {
+    0%   { transform: translate(-20%, -20%) rotate(0deg); }
+    50%  { transform: translate(20%, 20%) rotate(180deg); }
+    100% { transform: translate(-20%, -20%) rotate(360deg); }
+}
+
+/* ================= HOME BUTTON ================= */
+.home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    z-index: 1500;
+}
+
+/* ================= GALLERY ================= */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 90px 20px;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 14px;
+    display: block;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Floating animation before click */
+@keyframes float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+/* ================= SLIDESHOW ================= */
+.slideshow {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+}
+
+.slideshow.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Nano border only during slideshow */
+.slide-frame {
+    position: relative;
+    max-width: 85%;
+    max-height: 85%;
+    padding: 10px;
+    background: #000;
+    border-radius: 20px;
+}
+
+.slide-frame::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 22px;
+    background: linear-gradient(
+        120deg,
+        #00f0ff,
+        #ff00f7,
+        #00ff85,
+        #ffd000,
+        #00f0ff
+    );
+    background-size: 300% 300%;
+    animation: nanoFlow 6s linear infinite;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+@keyframes nanoFlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.slide-frame img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+/* ================= CLOSE ================= */
+.close-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1200;
+}
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="home-btn">Home</a>
+
+<!-- GALLERY -->
+<div class="gallery" id="gallery"></div>
+
+<!-- SLIDESHOW -->
+<div class="slideshow" id="slideshow">
+    <div class="slide-frame">
+        <img id="slideImage">
+    </div>
+</div>
+
+<div class="close-btn" id="closeBtn" style="display:none;">✕</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" src="vivek.mp4"></audio>
+
+<script>
+/* ================= IMAGE SET ================= */
+const imageCount = 30;
+const images = [];
+for (let i = 0; i < imageCount; i++) {
+    images.push(`photos/${i}.jpeg`);
+}
+
+/* ================= BUILD GALLERY ================= */
+const gallery = document.getElementById("gallery");
+images.forEach((src, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const img = document.createElement("img");
+    img.src = src;
+    img.onclick = () => openSlideshow(index);
+
+    card.appendChild(img);
+    gallery.appendChild(card);
+});
+
+/* ================= SLIDESHOW LOGIC ================= */
+let currentIndex = 0;
+let slideTimer;
+
+const slideshow = document.getElementById("slideshow");
+const slideImage = document.getElementById("slideImage");
+const closeBtn = document.getElementById("closeBtn");
+const music = document.getElementById("bgMusic");
+
+function openSlideshow(index) {
+    currentIndex = index;
+    slideImage.src = images[currentIndex];
+
+    slideshow.classList.add("active");
+    closeBtn.style.display = "block";
+
+    music.play().catch(() => {});
+    slideTimer = setInterval(nextSlide, 3500);
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    slideImage.src = images[currentIndex];
+}
+
+function closeSlideshow() {
+    clearInterval(slideTimer);
+    slideshow.classList.remove("active");
+    closeBtn.style.display = "none";
+    music.pause();
+    music.currentTime = 0;
+}
+
+closeBtn.onclick = closeSlideshow;
+</script>
+
+</body>
+</html>

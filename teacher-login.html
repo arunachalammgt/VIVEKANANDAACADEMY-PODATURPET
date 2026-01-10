@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Login</title>
+<link rel="icon" href="vivek.png">
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('NEW VI2.jpg'); /* SAME BACKGROUND */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* ---------- LOGIN CARD ---------- */
+.container {
+    width: 360px;
+    max-width: 90%;
+    background: rgba(0,0,0,0.65);
+    padding: 30px;
+    margin: 90px auto;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+/* ---------- TITLE ---------- */
+h2 {
+    margin-bottom: 20px;
+    color: #ffd27d;
+}
+
+/* ---------- INPUT ---------- */
+input {
+    width: 92%;
+    padding: 12px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+/* ---------- BUTTON ---------- */
+button {
+    width: 95%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #ff6600;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #e25400;
+}
+
+/* ---------- ERROR ---------- */
+.error {
+    color: #ff8080;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+/* ---------- LINK ---------- */
+a {
+    display: block;
+    margin-top: 18px;
+    text-decoration: none;
+    color: #ddd;
+    font-size: 14px;
+}
+
+a:hover {
+    color: #ffd27d;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px) {
+    .container {
+        margin: 60px auto;
+        padding: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Teacher Login</h2>
+
+    <input type="text" id="teacherUser" placeholder="Enter Username">
+    <input type="password" id="teacherPass" placeholder="Enter Password">
+
+    <button onclick="teacherLogin()">Login</button>
+
+    <p id="errorMsg" class="error"></p>
+
+    <a href="index.html">⬅ Back to Home</a>
+</div>
+
+<script>
+function teacherLogin() {
+    let user = document.getElementById("teacherUser").value.trim();
+    let pass = document.getElementById("teacherPass").value.trim();
+
+    if (user === "" || pass === "") {
+        document.getElementById("errorMsg").innerText =
+            "Please enter username and password.";
+        return;
+    }
+
+    // Temporary test credentials
+    if (user === "teacher1" && pass === "1234") {
+        window.location.href = "teacher-dashboard.html";
+    } else {
+        document.getElementById("errorMsg").innerText =
+            "Invalid details. Please contact the tuition centre.";
+    }
+}
+</script>
+
+</body>
+</html>

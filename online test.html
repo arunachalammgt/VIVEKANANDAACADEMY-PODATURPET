@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Test</title>
+<link rel="icon" href="vivek.png">
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Poppins",Arial,sans-serif;
+    min-height:100vh;
+    background:url("NEW VI2.jpg") center/cover no-repeat fixed;
+}
+
+/* Overlay for readability */
+.overlay{
+    min-height:100vh;
+    background:rgba(0,0,0,0.35);
+    padding-bottom:30px;
+}
+
+header{
+    background:rgba(0,91,187,0.65);
+    backdrop-filter:blur(8px);
+    color:#fff;
+    padding:18px;
+    text-align:center;
+    font-size:26px;
+    font-weight:600;
+}
+
+/* Glass container */
+.container{
+    width:92%;
+    max-width:850px;
+    margin:25px auto;
+    padding:25px;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 12px 35px rgba(0,0,0,0.35);
+    color:#fff;
+}
+
+h2,h3{
+    margin:0 0 10px 0;
+}
+
+p{
+    margin:0 0 15px 0;
+    opacity:0.95;
+}
+
+/* Timer */
+.timer-box{
+    background:rgba(255,255,255,0.25);
+    padding:14px;
+    border-radius:10px;
+    font-size:18px;
+    margin-bottom:20px;
+    border-left:5px solid #ff8a00;
+}
+
+/* Question */
+.question-box{
+    margin-top:20px;
+    padding:18px;
+    background:rgba(255,255,255,0.22);
+    border-radius:14px;
+    border-left:5px solid #00b3ff;
+}
+
+/* Options */
+.option{
+    margin:10px 0;
+    padding:12px;
+    background:rgba(255,255,255,0.85);
+    color:#000;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.option:hover{
+    background:#dfefff;
+}
+
+/* Buttons */
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:none;
+    border-radius:14px;
+    font-size:18px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff7a18,#ff5100);
+    color:#fff;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+/* Result */
+.result-box{
+    display:none;
+    text-align:center;
+    padding:20px;
+    margin-top:20px;
+    background:rgba(0,255,0,0.18);
+    border-radius:16px;
+}
+
+/* Mobile */
+@media(max-width:600px){
+    header{font-size:22px;}
+    .container{padding:20px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<header>Online Test</header>
+
+<div class="container">
+
+    <h2>Test: General Knowledge</h2>
+    <p>Answer all questions and click Submit.</p>
+
+    <div class="timer-box">
+        ⏳ Time Left: <span id="timer">05:00</span>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="question-box">
+        <h3>1. What is the capital of India?</h3>
+        <div class="option" onclick="selectOption(1,this)">Delhi</div>
+        <div class="option" onclick="selectOption(1,this)">Mumbai</div>
+        <div class="option" onclick="selectOption(1,this)">Kolkata</div>
+        <div class="option" onclick="selectOption(1,this)">Chennai</div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question-box">
+        <h3>2. 5 + 7 = ?</h3>
+        <div class="option" onclick="selectOption(2,this)">10</div>
+        <div class="option" onclick="selectOption(2,this)">11</div>
+        <div class="option" onclick="selectOption(2,this)">12</div>
+        <div class="option" onclick="selectOption(2,this)">13</div>
+    </div>
+
+    <button onclick="submitTest()">Submit Test</button>
+
+    <div class="result-box" id="resultBox">
+        <h2>Test Submitted</h2>
+        <h3>Your Score: <span id="score">0</span>/2</h3>
+        <button onclick="window.location.href='student-dashboard.html'">
+            Go Back
+        </button>
+    </div>
+
+</div>
+</div>
+
+<script>
+let answers = {};
+
+function selectOption(qNo, element){
+    answers[qNo] = element.innerText;
+    let options = element.parentElement.querySelectorAll(".option");
+    options.forEach(o => o.style.background = "rgba(255,255,255,0.85)");
+    element.style.background = "#b9d8ff";
+}
+
+function submitTest(){
+    let score = 0;
+    if(answers[1] === "Delhi") score++;
+    if(answers[2] === "12") score++;
+
+    document.getElementById("score").innerText = score;
+    document.getElementById("resultBox").style.display = "block";
+}
+
+/* Timer */
+let timeLeft = 300;
+let timer = document.getElementById("timer");
+
+setInterval(()=>{
+    if(timeLeft <= 0) return;
+    timeLeft--;
+    let m = Math.floor(timeLeft/60);
+    let s = timeLeft%60;
+    timer.innerText = `${m}:${s<10?"0"+s:s}`;
+},1000);
+</script>
+
+</body>
+</html>

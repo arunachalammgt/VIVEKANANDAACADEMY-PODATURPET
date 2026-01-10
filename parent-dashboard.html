@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Dashboard</title>
+<link rel="icon" href="vivek.png">
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('NEW VI2.jpg'); /* SAME AS ALL PAGES */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+    background: rgba(0,0,0,0.75);
+    padding: 18px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* ---------- CONTAINER ---------- */
+.container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+/* ---------- CARD ---------- */
+.card {
+    background: rgba(0,0,0,0.65);
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+/* ---------- TITLES ---------- */
+.title {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #ffd27d;
+}
+
+/* ---------- STATS ---------- */
+.stat-box {
+    font-size: 22px;
+    font-weight: bold;
+    color: #7CFC90;
+}
+
+/* ---------- TABLE ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+
+th {
+    background: rgba(255,255,255,0.15);
+    text-align: left;
+}
+
+/* ---------- BUTTON ---------- */
+.back-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    background: #ff6600;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    background: #e25400;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .header {
+        font-size: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Parent Dashboard</div>
+
+<div class="container">
+
+    <!-- Student Info -->
+    <div class="card">
+        <div class="title">Student Information</div>
+        <p><b>Name:</b> Arun Kumar</p>
+        <p><b>Standard:</b> 10</p>
+    </div>
+
+    <!-- Overall Performance -->
+    <div class="card">
+        <div class="title">Overall Performance</div>
+        <p><b>Current Rank:</b> <span class="stat-box">4</span></p>
+        <p><b>Overall Percentage:</b> <span class="stat-box">82%</span></p>
+    </div>
+
+    <!-- Test Performance -->
+    <div class="card">
+        <div class="title">Test Performance (Date-wise)</div>
+
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Percentage</th>
+                <th>Rank</th>
+            </tr>
+
+            <tr>
+                <td>12-10-2025</td>
+                <td>Maths</td>
+                <td>45/50</td>
+                <td>90%</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>08-10-2025</td>
+                <td>Science</td>
+                <td>40/50</td>
+                <td>80%</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>03-10-2025</td>
+                <td>English</td>
+                <td>42/50</td>
+                <td>84%</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>28-09-2025</td>
+                <td>Physics</td>
+                <td>35/50</td>
+                <td>70%</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>20-09-2025</td>
+                <td>Chemistry</td>
+                <td>38/50</td>
+                <td>76%</td>
+                <td>6</td>
+            </tr>
+        </table>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ Back</a>
+
+</div>
+
+</body>
+</html>

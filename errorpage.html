@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page under development</title>
+<link rel="icon" href="vivek.png">
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('NEW VI2.jpg'); /* SAME BACKGROUND */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* ---------- CENTER CONTAINER ---------- */
+.under-dev-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------- MESSAGE BOX ---------- */
+.under-dev-box {
+    background: rgba(0, 0, 0, 0.45);
+    padding: 40px 30px;
+    border-radius: 14px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+/* ---------- TEXT ---------- */
+.under-dev-box h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.under-dev-box p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* ---------- HOME BUTTON ---------- */
+.home-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    padding: 12px 28px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.home-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+    .under-dev-box h1 {
+        font-size: 24px;
+    }
+
+    .under-dev-box p {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="under-dev-container">
+    <div class="under-dev-box">
+        <h1>Sorry!</h1>
+        <p>This page is currently under development.<br>
+           Please visit again later.</p>
+
+        <button class="home-btn" onclick="goHome()">Home</button>
+    </div>
+</div>
+
+<script>
+function goHome() {
+    window.location.href = "index.html"; // your home page
+}
+</script>
+
+</body>
+</html>

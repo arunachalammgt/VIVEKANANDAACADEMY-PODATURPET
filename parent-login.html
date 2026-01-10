@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Login</title>
+<link rel="icon" href="vivek.png">
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('NEW VI2.jpg'); /* SAME BACKGROUND */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+/* ---------- LOGIN BOX ---------- */
+.container {
+    width: 360px;
+    background: rgba(0,0,0,0.65);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+/* ---------- TEXT ---------- */
+.container h2 {
+    margin-bottom: 15px;
+}
+
+.error {
+    color: #ff7070;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* ---------- INPUTS ---------- */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+/* ---------- BUTTON ---------- */
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 18px;
+    background: #ff6600;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e25400;
+}
+
+/* ---------- LINK ---------- */
+a {
+    display: block;
+    margin-top: 18px;
+    color: #00c3ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 24px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Parent Login</h2>
+
+    <input type="text" id="studentName" placeholder="Student Name">
+    
+    <select id="studentClass">
+        <option value="">Select Standard</option>
+        <option value="1">1st Std</option>
+        <option value="2">2nd Std</option>
+        <option value="3">3rd Std</option>
+        <option value="4">4th Std</option>
+        <option value="5">5th Std</option>
+        <option value="6">6th Std</option>
+        <option value="7">7th Std</option>
+        <option value="8">8th Std</option>
+        <option value="9">9th Std</option>
+        <option value="10">10th Std</option>
+        <option value="11">11th Std</option>
+        <option value="12">12th Std</option>
+    </select>
+
+    <input type="text" id="parentName" placeholder="Parent Name">
+
+    <button onclick="parentLogin()">Login</button>
+
+    <p id="errorMsg" class="error"></p>
+
+    <a href="index.html">⬅ Back to Home</a>
+</div>
+
+<script>
+function parentLogin() {
+    let sName = document.getElementById("studentName").value.trim();
+    let sClass = document.getElementById("studentClass").value.trim();
+    let pName = document.getElementById("parentName").value.trim();
+
+    if (sName === "" || sClass === "" || pName === "") {
+        document.getElementById("errorMsg").innerText =
+            "Please fill all fields.";
+        return;
+    }
+
+    // TEMP TEST LOGIC
+    if (sName === "Arun" && sClass === "10" && pName === "Sanmugam") {
+        window.location.href = "parent-dashboard.html";
+    } else {
+        document.getElementById("errorMsg").innerText =
+            "No data found. Please contact tuition centre.";
+    }
+}
+</script>
+
+</body>
+</html>

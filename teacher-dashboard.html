@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Dashboard</title>
+<link rel="icon" href="vivek.png">
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Poppins",Arial,sans-serif;
+    min-height:100vh;
+
+    /* SAME BACKGROUND IMAGE */
+    background:url("NEW VI2.jpg") center/cover no-repeat fixed;
+}
+
+/* Light overlay for contrast */
+.overlay{
+    min-height:100vh;
+    background:rgba(0,0,0,0.35);
+    padding-bottom:30px;
+}
+
+header{
+    background:rgba(0,91,187,0.65);
+    backdrop-filter:blur(8px);
+    color:#fff;
+    padding:18px;
+    text-align:center;
+    font-size:26px;
+    font-weight:600;
+}
+
+/* Layout */
+.container{
+    width:92%;
+    max-width:1000px;
+    margin:25px auto;
+}
+
+/* GLASS CARD */
+.card, .section-box{
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:16px;
+    padding:22px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+    margin-bottom:20px;
+    color:#fff;
+}
+
+h2, h3{
+    margin:0 0 12px 0;
+}
+
+p{
+    margin:0;
+    opacity:0.95;
+}
+
+select, input{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    margin-top:8px;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    background:rgba(255,255,255,0.9);
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:12px;
+    border:none;
+    border-radius:12px;
+    font-size:17px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff7a18,#ff5100);
+    color:#fff;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.graph-box{
+    height:220px;
+    margin-top:15px;
+    border-radius:12px;
+    border:2px dashed rgba(255,255,255,0.6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:14px;
+}
+
+.logout-btn{
+    background:linear-gradient(135deg,#ff3b3b,#b40000);
+}
+
+/* Mobile */
+@media(max-width:600px){
+    header{font-size:22px;}
+    .card,.section-box{padding:18px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<header>
+    Teacher Dashboard
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Welcome, Teacher</h2>
+        <p>Manage your classes, tests, and student performance.</p>
+    </div>
+
+    <div class="card">
+        <h3>Select Class</h3>
+        <select>
+            <option>Select Class</option>
+            <option>1st Std</option><option>2nd Std</option><option>3rd Std</option>
+            <option>4th Std</option><option>5th Std</option><option>6th Std</option>
+            <option>7th Std</option><option>8th Std</option><option>9th Std</option>
+            <option>10th Std</option><option>11th Std</option><option>12th Std</option>
+        </select>
+    </div>
+
+    <div class="card">
+        <h3>Select Subject</h3>
+        <select>
+            <option>Select Subject</option>
+            <option>Maths</option>
+            <option>Science</option>
+            <option>English</option>
+            <option>Tamil</option>
+            <option>Physics</option>
+            <option>Chemistry</option>
+            <option>Biology</option>
+        </select>
+    </div>
+
+    <div class="card">
+        <h3>Options</h3>
+        <button onclick="openOnlineTest()">Online Test Results</button>
+        <button onclick="openWrittenTest()">Written Test Mark Entry</button>
+    </div>
+
+    <div id="onlineTestSection" class="section-box" style="display:none;">
+        <h3>Online Test Results</h3>
+        <input type="date">
+        <button>View Results</button>
+        <div class="graph-box">Graph will display here</div>
+    </div>
+
+    <div id="writtenTestSection" class="section-box" style="display:none;">
+        <h3>Written Test Mark Entry</h3>
+        <input type="text" placeholder="Enter Test Name">
+        <button>Load Student List</button>
+        <div class="graph-box">Student list will appear here</div>
+    </div>
+
+    <button class="logout-btn" onclick="window.location.href='index.html'">
+        Logout
+    </button>
+
+</div>
+</div>
+
+<script>
+function openOnlineTest(){
+    onlineTestSection.style.display="block";
+    writtenTestSection.style.display="none";
+}
+function openWrittenTest(){
+    onlineTestSection.style.display="none";
+    writtenTestSection.style.display="block";
+}
+</script>
+
+</body>
+</html>

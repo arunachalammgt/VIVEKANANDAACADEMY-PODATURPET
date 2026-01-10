@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>மாணவர் சேர்க்கை படிவம்</title>
+<link rel="icon" href="vivek.png">
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Poppins",Arial,sans-serif;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:url("NEW VI2.jpg") center/cover no-repeat fixed;
+}
+
+.overlay{
+    min-height:100vh;
+    background:rgba(0,0,0,0.45);
+    padding:30px 0;
+}
+
+header{
+    text-align:center;
+    color:#fff;
+    font-size:30px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.form-container{
+    width:92%;
+    max-width:950px;
+    margin:auto;
+    padding:30px;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(14px);
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 15px 40px rgba(0,0,0,0.35);
+    color:#fff;
+}
+
+.section{
+    margin-bottom:30px;
+}
+
+.section h2{
+    margin-bottom:15px;
+    padding-bottom:8px;
+    border-bottom:2px solid rgba(255,255,255,0.4);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+}
+
+textarea{
+    resize:none;
+    height:90px;
+}
+
+.photo-box{
+    background:rgba(255,255,255,0.85);
+    padding:12px;
+    border-radius:12px;
+    color:#000;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#ff7a18,#ff4b00);
+    color:#fff;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+@media(max-width:600px){
+    header{font-size:24px;}
+    .form-container{padding:22px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<header>மாணவர் சேர்க்கை படிவம்</header>
+
+<form class="form-container">
+
+<!-- 1. மாணவர் தகவல் -->
+<div class="section">
+<h2>1. மாணவர் தகவல்</h2>
+
+<div class="grid">
+<input type="text" placeholder="முழு பெயர்" required>
+<input type="date" placeholder="பிறந்த தேதி" required>
+<input type="number" placeholder="வயது" required>
+
+<select required>
+<option value="">பாலினம்</option>
+<option>ஆண்</option>
+<option>பெண்</option>
+<option>மற்றவை</option>
+</select>
+
+<input type="text" placeholder="பள்ளியின் பெயர் மற்றும் வகுப்பு" required>
+
+<select required>
+<option value="">மொழி</option>
+<option>ஆங்கிலம்</option>
+<option>தமிழ்</option>
+<option>மற்றவை</option>
+</select>
+
+<select required>
+<option value="">சேர்க்கை செய்ய விரும்பும் வகுப்பு</option>
+<option>1ஆம் வகுப்பு</option>
+<option>2ஆம் வகுப்பு</option>
+<option>3ஆம் வகுப்பு</option>
+<option>4ஆம் வகுப்பு</option>
+<option>5ஆம் வகுப்பு</option>
+<option>6ஆம் வகுப்பு</option>
+<option>7ஆம் வகுப்பு</option>
+<option>8ஆம் வகுப்பு</option>
+<option>9ஆம் வகுப்பு</option>
+<option>10ஆம் வகுப்பு</option>
+<option>11ஆம் வகுப்பு</option>
+<option>12ஆம் வகுப்பு</option>
+</select>
+
+<textarea placeholder="முகவரி" required></textarea>
+</div>
+
+<br>
+
+<div class="photo-box">
+<label><strong>மாணவர் புகைப்படம் (கட்டாயம்)</strong></label><br><br>
+<input type="file" accept="image/*" required>
+</div>
+</div>
+
+<!-- 2. பெற்றோர் / பாதுகாவலர் தகவல் -->
+<div class="section">
+<h2>2. பெற்றோர் / பாதுகாவலர் தகவல்</h2>
+
+<div class="grid">
+<select required>
+<option value="">தந்தை / தாய் / பாதுகாவலர்</option>
+<option>தந்தை</option>
+<option>தாய்</option>
+<option>பாதுகாவலர்</option>
+</select>
+
+<input type="text" placeholder="பெயர்" required>
+<input type="tel" placeholder="மொபைல் எண்" required>
+<input type="tel" placeholder="மாற்று எண்">
+<input type="text" placeholder="வேலை/தொழில்" required>
+</div>
+</div>
+
+<!-- 3. வகுப்பு / பாடப்பிரிவு -->
+<div class="section">
+<h2>3. வகுப்பு / பாடப்பிரிவு</h2>
+
+<div class="grid">
+<select required>
+<option value="">வகுப்பு / கிரேடு</option>
+<option>1ஆம் வகுப்பு</option>
+<option>2ஆம் வகுப்பு</option>
+<option>3ஆம் வகுப்பு</option>
+<option>4ஆம் வகுப்பு</option>
+<option>5ஆம் வகுப்பு</option>
+<option>6ஆம் வகுப்பு</option>
+<option>7ஆம் வகுப்பு</option>
+<option>8ஆம் வகுப்பு</option>
+<option>9ஆம் வகுப்பு</option>
+<option>10ஆம் வகுப்பு</option>
+<option>11ஆம் வகுப்பு</option>
+<option>12ஆம் வகுப்பு</option>
+</select>
+
+<input type="text" placeholder="தேவைப்படும் பாடங்கள் (கணிதம், அறிவியல், ஆங்கிலம் போன்றவை)" required>
+
+<select required>
+<option value="">Batch</option>
+<option>REGULAR</option>
+<option>SAT & SUNDAY</option>
+</select>
+</div>
+</div>
+
+<button type="submit">சமர்ப்பிக்கவும்</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

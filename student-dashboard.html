@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+<link rel="icon" href="vivek.png">
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('NEW VI2.jpg'); /* SAME AS ALL PAGES */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+    background: rgba(0,0,0,0.75);
+    padding: 16px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ---------- CONTAINER ---------- */
+.container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+/* ---------- CARD ---------- */
+.card {
+    background: rgba(0,0,0,0.65);
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+/* ---------- TITLES ---------- */
+.title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffd27d;
+}
+
+/* ---------- BUTTON ---------- */
+.btn {
+    display: inline-block;
+    padding: 12px 18px;
+    background: #ff6600;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #e25400;
+}
+
+/* ---------- TABLE ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+
+th {
+    background: rgba(255,255,255,0.15);
+    text-align: left;
+}
+
+/* ---------- RANK ---------- */
+.rank-box {
+    font-size: 26px;
+    font-weight: bold;
+    color: #7CFC90;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .header {
+        font-size: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Student Dashboard</div>
+
+<div class="container">
+
+    <!-- Today Test -->
+    <div class="card">
+        <div class="title">Today's Test</div>
+        <p><b>Subject:</b> Mathematics</p>
+        <p><b>Topic:</b> Algebra Basics</p>
+        <a class="btn" href="online test.html">Attend Test</a>
+    </div>
+
+    <!-- Current Rank -->
+    <div class="card">
+        <div class="title">Current Rank</div>
+        <p>Your Current Rank:
+            <span class="rank-box" id="rank">5</span>
+        </p>
+    </div>
+
+    <!-- Previous Tests -->
+    <div class="card">
+        <div class="title">Previous Tests</div>
+
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Percentage</th>
+            </tr>
+
+            <tr>
+                <td>10-10-2025</td>
+                <td>Maths</td>
+                <td>45/50</td>
+                <td>90%</td>
+            </tr>
+            <tr>
+                <td>05-10-2025</td>
+                <td>Science</td>
+                <td>38/50</td>
+                <td>76%</td>
+            </tr>
+            <tr>
+                <td>01-10-2025</td>
+                <td>English</td>
+                <td>42/50</td>
+                <td>84%</td>
+            </tr>
+        </table>
+
+        <a class="btn" href="index.html">⬅ Back</a>
+    </div>
+
+</div>
+
+<script>
+    // Replace hardcoded values with backend API data
+</script>
+
+</body>
+</html>
