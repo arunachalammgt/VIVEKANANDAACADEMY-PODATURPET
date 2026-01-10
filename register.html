@@ -219,35 +219,38 @@ button:hover{
 
 
 </div>
-    <script>
-const form = document.getElementById("admissionForm");
+<script>
+const form = document.querySelector("form");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
 
-  // photo handling (Vercel safe)
-  const photoInput = document.getElementById("photo");
-  data.photo = photoInput.files.length > 0 ? photoInput.files[0].name : "vivek.png";
+  try {
+    const res = await fetch("/api/admission", {
+      method: "POST",
+      body: formData
+    });
 
-  const res = await fetch("/api/admission", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
+    if (!res.ok) {
+      throw new Error("Server error");
+    }
 
-  if (res.ok) {
-    alert("மாணவர் சேர்க்கை வெற்றிகரமாக முடிந்தது");
+    alert("Admission submitted successfully");
     form.reset();
-  } else {
-    alert("பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்");
+
+  } catch (err) {
+    alert("An error occurred. Please try again.");
+    console.error(err);
   }
 });
 </script>
 
+    
+
 
 </body>
 </html>
+
 
