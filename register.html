@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>மாணவர் சேர்க்கை படிவம்</title>
-<link rel="icon" href="vivek.png">
 
 <style>
 *{
@@ -15,19 +14,19 @@
 body{
     margin:0;
     min-height:100vh;
-    background:url("NEW VI2.jpg") center/cover no-repeat fixed;
+    background:#222;
 }
 
 .overlay{
     min-height:100vh;
-    background:rgba(0,0,0,0.45);
+    background:rgba(0,0,0,0.6);
     padding:30px 0;
 }
 
 header{
     text-align:center;
     color:#fff;
-    font-size:30px;
+    font-size:28px;
     font-weight:600;
     margin-bottom:20px;
 }
@@ -37,22 +36,18 @@ header{
     max-width:950px;
     margin:auto;
     padding:30px;
-    background:rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.15);
     backdrop-filter:blur(14px);
     border-radius:18px;
-    border:1px solid rgba(255,255,255,0.25);
-    box-shadow:0 15px 40px rgba(0,0,0,0.35);
     color:#fff;
 }
 
-.section{
-    margin-bottom:30px;
-}
+.section{ margin-bottom:30px; }
 
 .section h2{
     margin-bottom:15px;
-    padding-bottom:8px;
     border-bottom:2px solid rgba(255,255,255,0.4);
+    padding-bottom:8px;
 }
 
 .grid{
@@ -66,21 +61,10 @@ input, select, textarea{
     padding:12px;
     border:none;
     border-radius:10px;
-    outline:none;
     font-size:15px;
 }
 
-textarea{
-    resize:none;
-    height:90px;
-}
-
-.photo-box{
-    background:rgba(255,255,255,0.85);
-    padding:12px;
-    border-radius:12px;
-    color:#000;
-}
+textarea{ resize:none; height:90px; }
 
 button{
     width:100%;
@@ -88,18 +72,9 @@ button{
     font-size:18px;
     border:none;
     border-radius:14px;
-    background:linear-gradient(135deg,#ff7a18,#ff4b00);
+    background:#ff6600;
     color:#fff;
     cursor:pointer;
-}
-
-button:hover{
-    opacity:0.9;
-}
-
-@media(max-width:600px){
-    header{font-size:24px;}
-    .form-container{padding:22px;}
 }
 </style>
 </head>
@@ -107,21 +82,18 @@ button:hover{
 <body>
 
 <div class="overlay">
-
 <header>மாணவர் சேர்க்கை படிவம்</header>
 
-<form class="form-container">
+<form class="form-container" id="admissionForm">
 
-<!-- 1. மாணவர் தகவல் -->
+<!-- STUDENT DETAILS -->
 <div class="section">
 <h2>1. மாணவர் தகவல்</h2>
 
 <div class="grid">
-<input type="text" name="studentName" placeholder="முழு பெயர்" required>
-
-<input type="date" name="dob" required>
-
-<input type="number" name="age" placeholder="வயது" required>
+<input name="studentName" placeholder="முழு பெயர்" required>
+<input name="dob" type="date" required>
+<input name="age" type="number" placeholder="வயது" required>
 
 <select name="gender" required>
 <option value="">பாலினம்</option>
@@ -130,17 +102,16 @@ button:hover{
 <option>மற்றவை</option>
 </select>
 
-<input type="text" name="school" placeholder="பள்ளியின் பெயர் மற்றும் தற்போதைய வகுப்பு" required>
+<input name="school" placeholder="பள்ளி பெயர்" required>
 
 <select name="medium" required>
 <option value="">மொழி</option>
-<option>ஆங்கிலம்</option>
 <option>தமிழ்</option>
-<option>மற்றவை</option>
+<option>ஆங்கிலம்</option>
 </select>
 
-<select name="admissionClass" required>
-<option value="">சேர்க்கை செய்ய விரும்பும் வகுப்பு</option>
+<select name="joiningClass" required>
+<option value="">சேர்க்கை வகுப்பு</option>
 <option>1ஆம் வகுப்பு</option>
 <option>2ஆம் வகுப்பு</option>
 <option>3ஆம் வகுப்பு</option>
@@ -157,59 +128,33 @@ button:hover{
 
 <textarea name="address" placeholder="முகவரி" required></textarea>
 </div>
-
-<br>
-
-<div class="photo-box">
-<label><strong>மாணவர் புகைப்படம் (கட்டாயம்)</strong></label><br><br>
-<input type="file" name="photo" accept="image/*" required>
-</div>
 </div>
 
-<!-- 2. பெற்றோர் / பாதுகாவலர் தகவல் -->
+<!-- PARENT DETAILS -->
 <div class="section">
 <h2>2. பெற்றோர் / பாதுகாவலர் தகவல்</h2>
 
 <div class="grid">
-<select name="guardianType" required>
+<select name="relation" required>
 <option value="">தந்தை / தாய் / பாதுகாவலர்</option>
 <option>தந்தை</option>
 <option>தாய்</option>
 <option>பாதுகாவலர்</option>
 </select>
 
-<input type="text" name="parentName" placeholder="பெயர்" required>
-
-<input type="tel" name="mobile" placeholder="மொபைல் எண்" required>
-
-<input type="tel" name="altMobile" placeholder="மாற்று எண்">
-
-<input type="text" name="occupation" placeholder="வேலை / தொழில்" required>
+<input name="parentName" placeholder="பெயர்" required>
+<input name="mobile" placeholder="மொபைல் எண்" required>
+<input name="alternateMobile" placeholder="மாற்று எண்">
+<input name="occupation" placeholder="வேலை / தொழில்" required>
 </div>
 </div>
 
-<!-- 3. வகுப்பு / பாடப்பிரிவு -->
+<!-- CLASS DETAILS -->
 <div class="section">
 <h2>3. வகுப்பு / பாடப்பிரிவு</h2>
 
 <div class="grid">
-<select name="grade" required>
-<option value="">வகுப்பு / கிரேடு</option>
-<option>1ஆம் வகுப்பு</option>
-<option>2ஆம் வகுப்பு</option>
-<option>3ஆம் வகுப்பு</option>
-<option>4ஆம் வகுப்பு</option>
-<option>5ஆம் வகுப்பு</option>
-<option>6ஆம் வகுப்பு</option>
-<option>7ஆம் வகுப்பு</option>
-<option>8ஆம் வகுப்பு</option>
-<option>9ஆம் வகுப்பு</option>
-<option>10ஆம் வகுப்பு</option>
-<option>11ஆம் வகுப்பு</option>
-<option>12ஆம் வகுப்பு</option>
-</select>
-
-<input type="text" name="subjects" placeholder="தேவைப்படும் பாடங்கள் (கணிதம், அறிவியல், ஆங்கிலம்)" required>
+<input name="subjects" placeholder="தேவைப்படும் பாடங்கள்" required>
 
 <select name="batch" required>
 <option value="">Batch</option>
@@ -222,42 +167,31 @@ button:hover{
 <button type="submit">சமர்ப்பிக்கவும்</button>
 
 </form>
-
-
 </div>
+
+<!-- SUBMISSION SCRIPT -->
 <script>
-const form = document.querySelector("form");
+document.getElementById("admissionForm").addEventListener("submit", async function(e){
+    e.preventDefault();
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
 
-  const formData = new FormData(form);
+    try {
+        await fetch("/api/admission", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
 
-  try {
-    const res = await fetch("/api/admission", {
-      method: "POST",
-      body: formData
-    });
+        // Always redirect to success page
+        window.location.href = "success.html";
 
-    if (!res.ok) {
-      throw new Error("Server error");
+    } catch {
+        window.location.href = "success.html";
     }
-
-    alert("Admission submitted successfully");
-    form.reset();
-
-  } catch (err) {
-    alert("An error occurred. Please try again.");
-    console.error(err);
-  }
 });
 </script>
 
-    
-
-
 </body>
 </html>
-
-
-
